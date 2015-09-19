@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="keywordsList">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Planets and Houses Keywords</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <style>
+        body {
+        padding-top: 70px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+        }
+        </style>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <!-- Angular 1.4.5 -->
+        <script src="js/angular.js"></script>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Astro Playground</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="grahas.html">Grahas</a>
+                        </li>
+                        <li>
+                            <a href="#">Rashis</a>
+                        </li>
+                        <li>
+                            <a href="#">Bhavas</a>
+                        </li>
+                        <li>
+                            <a href="keywords.html">Keywords</a>
+                        </li>
+                        <li>
+                            <a href="BeneficsExercise.html">Benefics Exercise</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+        <!-- Page Content -->
+        <div ng-controller = "KeywordsListController" class="container">
+            <div class="col-lg-6">
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    {{currentPlanet.name}}
+                    <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li ng-repeat="planet in planets"><a ng-click="populatePlanetKeywords(planet)" href="">{{planet.name}}</a></li>
+                        
+                    </ul>
+                    
+                </div>
+                <div  class="row">
+                    <ul class="pagination">
+                        <li>
+                            <a ng-click="previousPlanetPage()" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li ng-click="showPlanetPage($index + 1)" ng-repeat="i in getPaginationLimit(numberOfPlanetPages) track by $index"><a href="">{{$index+1}}</a></li>
+                        <li>
+                            <a ng-click="nextPlanetPage()" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="canvas_container" class="col-lg-6 text-center">
+                    
+                    
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        {{currentHouse.value}}
+                        <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li ng-repeat="house in houses"><a ng-click="populateHouseKeywords(house)" href="">{{house.value}}</a></li>
+                            
+                        </ul>
+                        
+                    </div>
+                    <div  class="row">
+                        <ul class="pagination">
+                            <li>
+                                <a ng-click="previousHousePage()" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li ng-click="showHousePage($index + 1)" ng-repeat="i in getPaginationLimit(numberOfHousePages) track by $index"><a href="">{{$index+1}}</a></li>
+                            <li>
+                                <a ng-click="nextHousePage()" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="canvas_container2" class="col-lg-6 text-center">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+        <!-- jQuery Version 1.11.1 -->
+        <script src="js/jquery.js"></script>
+        <!-- Raphael  -->
+        <script src="js/raphael.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/keywordsList.js"></script>
+    </body>
+</html>
